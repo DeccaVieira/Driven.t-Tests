@@ -9,4 +9,17 @@ async function findHotels() {
   return optionHotels;
 }
 
+async function findHotelsById(hotelId: number, userId: number) {
+  const optionHotelById = await hotelRepository.findOptionHotelsById(hotelId);
+  if (!optionHotelById) {
+    throw notFoundError();
+  }
+  return optionHotelById;
+}
 
+const hotelService = {
+  findHotels,
+  findHotelsById,
+};
+
+export default hotelService
